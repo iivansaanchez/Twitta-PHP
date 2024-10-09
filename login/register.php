@@ -33,17 +33,22 @@
     <div class="register-form">
         <h2 class="text-center mb-4">Register</h2>
 
-        <!-- Error message (optional) -->
-        <?php if(isset($_SESSION["error"])) { ?>
+        <?php if(isset($_SESSION["errores"]) && count($_SESSION["errores"]) > 0) { ?>
             <div class="alert alert-danger text-center" role="alert">
-                <?php
-                echo $_SESSION["error"]; // Display error message
-                unset($_SESSION["error"]); // Clear the error message after displaying it
-                ?>
+                <p>
+                    <?php
+                    // Recorremos el array de errores y mostramos cada uno en una lista
+                    foreach($_SESSION["errores"] as $error) {
+                        echo "<li>$error</li>";
+                    }
+                    unset($_SESSION["errores"]); // Limpiar los errores después de mostrarlos
+                    ?>
+                </p>  
             </div>
         <?php } ?>
 
-        <form action="./register/register_process.php" method="POST">
+
+        <form action="./register_process.php" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>

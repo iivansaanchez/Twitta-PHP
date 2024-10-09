@@ -38,7 +38,9 @@
                 unset($_SESSION["error"]);
                 ?>
             </div>
-        <?php } ?>
+        <?php 
+        } 
+        ?>
 
         <form action="./login/login.php" method="POST">
             <div class="form-group">
