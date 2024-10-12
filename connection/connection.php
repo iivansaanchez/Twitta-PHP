@@ -11,8 +11,6 @@ function connection(){
 
     mysqli_select_db($connect, $bd);
 
-    session_start();
-
     return $connect;
 
 }
