@@ -2,30 +2,37 @@
 session_start();
 
 require_once "../connection/connection.php";
-    
+
 $connect = connection();
 
-#Vamos a resctar toda la lista de tweet para mostrarlos en el homo de la pagina
+#En primer lugar, debemos eliminar o inicializar a 0 la lista de usuarios que seguimos
+$_SESSION["listUsersTweet"] = [];
+
+# Vamos a rescatar toda la lista de tweets para mostrarlos en el home de la página
 $sql = "SELECT publications.*, users.username FROM publications JOIN users ON publications.userId = users.id";
 $res = mysqli_query($connect, $sql);
-#Una vez que hemos hecho la query comprobamos que ha funcionado
-if($res && mysqli_num_rows($res) > 0){
+
+# Comprobamos que la conexión y la consulta han sido exitosas
+if ($res && mysqli_num_rows($res) > 0) {
     $listTweets = [];
-    #Vamos a hacer un bucle para obtener todos los datos de la respuesta
-    #Este bucle se ejecutara mientras existan rows cuando no haya el bucle parara
-    while($tweet = mysqli_fetch_assoc($res)){
+
+    # Recorremos los resultados y los almacenamos en un array
+    while ($tweet = mysqli_fetch_assoc($res)) {
         $listTweets[] = $tweet;
     }
-    #Lo almacenamos en una variable global para posteriormente mostrarlo
+
+    # Almacenamos los tweets en la sesión para mostrarlos posteriormente
     $_SESSION["listTweetGeneral"] = $listTweets;
 
-    #Tenemos que almacenar
+    # Redirigimos a la página principal para actualizar la lista de tweets
+    header("Location: ../pages/landingPage.php");
 
-    #Si es correcto redirigimos a la misma pagina para actualizar la lista de tweet
+} else {
+    # Si la consulta falla, mostramos un mensaje de error y limpiamos la lista de tweets
+    $_SESSION["listTweetGeneral"] = [];
+    $_SESSION["error_listGeneral"] = "Failed to view tweets... Sorry.";
     header("Location: ../pages/landingPage.php");
-}else{
-    #Si la consulta es erronea mostraremos el siguiente mensaje
-    $_SESSION["error_listGeneral"] = "Failed to view tweet... Sorry.";
-    header("Location: ../pages/landingPage.php");
+
 }
+
 ?>
