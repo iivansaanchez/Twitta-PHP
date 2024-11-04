@@ -42,7 +42,7 @@
         } 
         ?>
 
-        <form action="./login/login.php" method="POST">
+        <form action="./login/login_process.php" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
