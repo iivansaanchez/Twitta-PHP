@@ -3,7 +3,7 @@
 function connection(){
     $host = "localhost:3306";
     $user = "root";
-    $pass = "Ivan14402";
+    $pass = "root";
 
     $bd = "social_network";
 
