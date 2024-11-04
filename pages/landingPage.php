@@ -17,11 +17,11 @@ if(isset($_SESSION["usuario"])){?>
             }
             .sidebar {
                 width: 250px;
-                height: 100%; /* Altura completa */
+                height: 100%;
                 background-color: #343a40;
                 color: white;
                 padding: 15px;
-                position: fixed; /* Fijo */
+                position: fixed;
             }
             .sidebar a {
                 color: white;
@@ -31,10 +31,10 @@ if(isset($_SESSION["usuario"])){?>
                 border-radius: 4px;
             }
             .content {
-                margin-left: 250px; /* Deja espacio para el sidebar */
+                margin-left: 250px;
                 padding: 20px;
                 background-color: #f8f9fa;
-                flex: 1; /* Esto asegura que el contenido ocupe el resto del espacio */
+                flex: 1;
             }
             .tweet-input {
                 border: 1px solid #ced4da;

@@ -8,7 +8,6 @@ if (isset($_GET['user'])) {
     // Incluimos el archivo que contiene la lógica de procesamiento, pasando el $userId
     require_once "./profile_process.php";
 
-    // En `profile_process.php`, asegúrate de utilizar $userId para buscar la información de perfil:
     if (empty($userInfo)) {
         header("Location: ./landingPage.php");
         exit();
@@ -30,29 +29,29 @@ if (isset($_GET['user'])) {
     <style>
         body {
             background-color: #f8f9fa;
-            display: flex; /* Usamos flexbox para la disposición */
+            display: flex;
         }
         .sidebar {
             width: 250px;
-            height: 100vh; /* Altura completa del viewport */
+            height: 100vh;
             background-color: #343a40;
             color: white;
             padding: 20px;
-            position: fixed; /* Fijo */
-            overflow-y: auto; /* Permitir scroll si el contenido es más grande que la ventana */
+            position: fixed;
+            overflow-y: auto;
         }
         .sidebar a {
             color: white;
-            text-decoration: none; /* Sin subrayado */
+            text-decoration: none;
         }
         .sidebar a:hover {
             background-color: #495057;
             border-radius: 4px;
         }
         .content-container {
-            margin-left: 250px; /* Deja espacio para el sidebar */
+            margin-left: 250px;
             padding: 20px;
-            flex: 1; /* Esto asegura que el contenido ocupe el resto del espacio */
+            flex: 1;
         }
         .card-header {
             background-color: #343a40;
@@ -124,8 +123,7 @@ if (isset($_GET['user'])) {
                 <p class="text-muted" id="user-description"><?php echo htmlspecialchars($userInfo['description']); ?></p>
             </div>
 
-            <!-- Opción para editar la descripción si el usuario actual es el propietario del perfil -->
-            <?php if ($usuario['id'] == $userInfo['id']): // Asegúrate de que la comparación sea con el ID del usuario ?>
+            <?php if ($usuario['id'] == $userInfo['id']):?>
                 <div class="card mt-4 shadow-sm">
                     <div class="card-body">
                         <form action="./description_process.php" method="POST">
@@ -157,7 +155,6 @@ if (isset($_GET['user'])) {
         </div>
     </div>
 
-    <!-- Lista de tweets del usuario -->
     <h3 class="font-weight-bold">Tweets</h3>
     <div class="list-group">
         <?php if (!empty($tweets)): ?>
