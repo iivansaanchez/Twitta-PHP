@@ -54,7 +54,10 @@ if(isset($_SESSION["usuario"])){?>
             <p class="text-center"><?php echo $usuario["email"] ?></p>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="./profile.php">Profile</a>
+                    <a class="nav-link" href="../pages/landingPage.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/profile.php?user=<?php echo $usuario["id"]; ?>">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../login/logout_process.php">Logout</a>
@@ -103,12 +106,12 @@ if(isset($_SESSION["usuario"])){?>
                 <div class="card mb-3">
                     <div class="card-body">
                         <h5 class="card-title d-flex justify-content-between align-items-center">
-                            <a href="../pages/profile.php?user=<?php echo htmlspecialchars($tweet['userId'] ?? ''); ?>" class="text-decoration-none text-dark">
-                                <?php echo htmlspecialchars($tweet['username'] ?? ''); ?>
+                            <a href="../pages/profile.php?user=<?php echo ($tweet['userId']); ?>" class="text-decoration-none text-dark">
+                                <?php echo ($tweet['username']); ?>
                             </a>
-                            <small class="text-muted"><?php echo htmlspecialchars($tweet['createDate'] ?? ''); ?></small>
+                            <small class="text-muted"><?php echo ($tweet['createDate']); ?></small>
                         </h5>
-                        <p class="card-text"><?php echo htmlspecialchars($tweet['text'] ?? ''); ?></p>
+                        <p class="card-text"><?php echo ($tweet['text']); ?></p>
                     </div>
                 </div>
             <?php endforeach; ?>

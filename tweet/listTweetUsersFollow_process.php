@@ -21,12 +21,12 @@ if (isset($_SESSION["usuario"])) {
 
     if ($followData['followCount'] > 0) {
         // Si el usuario sigue a alguien, ejecutamos la consulta de tweets
-        $sql = "SELECT p.text, p.createDate, u.username
-                FROM follows f
-                JOIN publications p ON f.userToFollowId = p.userId
-                JOIN users u ON p.userId = u.id
-                WHERE f.users_id = $userId
-                ORDER BY p.createDate DESC";
+        $sql = "SELECT p.text, p.createDate, p.userId, u.username
+        FROM follows f
+        JOIN publications p ON f.userToFollowId = p.userId
+        JOIN users u ON p.userId = u.id
+        WHERE f.users_id = $userId
+        ORDER BY p.createDate DESC";
         
         $res = mysqli_query($connect, $sql);  
 
