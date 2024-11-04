@@ -109,16 +109,17 @@ if (isset($_GET['user'])) {
             <h2 class="mb-0"><?php echo htmlspecialchars($userInfo['username']); ?></h2>
         </div>
         <div class="card-body profile-header">
-            <div class="d-flex justify-content-around mt-4">
-                <div class="text-center">
-                    <h6 class="font-weight-bold">Followers</h6>
-                    <p class="mb-0"><?php echo $followersCount; ?></p>
-                </div>
-                <div class="text-center">
-                    <h6 class="font-weight-bold">Following</h6>
-                    <p class="mb-0"><?php echo $followingCount; ?></p>
-                </div>
+        <div class="d-flex justify-content-around mt-4">
+            <div class="text-center">
+                <h6 class="font-weight-bold">Followers</h6>
+                <a href="./follow/followers.php?userId=<?php echo $userId; ?>" class="mb-0"><?php echo $followersCount; ?></a>
             </div>
+            <div class="text-center">
+                <h6 class="font-weight-bold">Following</h6>
+                <a href="./follow/following.php?userId=<?php echo $userId; ?>" class="mb-0"><?php echo $followingCount; ?></a>
+            </div>
+        </div>
+
             <div>
                 <p class="text-muted" id="user-description"><?php echo htmlspecialchars($userInfo['description']); ?></p>
             </div>
